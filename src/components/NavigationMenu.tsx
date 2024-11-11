@@ -7,21 +7,34 @@ import { MoonIcon, SunIcon } from "./icons/icons";
 export default function NavigationMenu() {
 
     const { isDarkMode, toggleDarkMode } = useDarkMode();
-    
+
     return (
-        
+
         <nav>
             <ul className="flex gap-2 p-2 text-sm">
-                    
-                    <Button onClick={toggleDarkMode} className="h-10 w-10 border-b-gray-400">
-                        <div>
-                            {isDarkMode ? <MoonIcon /> : <SunIcon />}
-                        </div>
-                    </Button>
+
+                <Button onClick={toggleDarkMode} className="h-10 w-10 border-b-gray-400">
+                    <div>
+                        {isDarkMode ? <MoonIcon /> : <SunIcon />}
+                    </div>
+                </Button>
 
                 <li>
                     <Link to="/">Home</Link>
                 </li>
+
+                <li>
+                    <Link to="/library">Library</Link>
+                </li>
+
+                <li>
+                    <Link to="/add">Add</Link>
+                </li>
+
+                <li>
+                    <Link to="/settings">Settings</Link>
+                </li>
+
             </ul>
         </nav>
     );

@@ -6,6 +6,7 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, For
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 
+
 const formSchema = z.object({
   link: z.string().url({
     message: "Must be a valid URL"
@@ -13,6 +14,8 @@ const formSchema = z.object({
 });
 
 const MangaLinkForm = () => {
+
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -21,7 +24,9 @@ const MangaLinkForm = () => {
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log("submitted", data);
+    if (data.link.startsWith("https://comick.io/")) {
+      console.log("Valid link");
+    }
   };
 
   return (
@@ -43,7 +48,7 @@ const MangaLinkForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Read</Button>
       </form>
     </Form>
   );
